@@ -1,17 +1,20 @@
-# reservas_golf
+# Reservas Golf
 
-A new Flutter project.
+Aplicación de reservas de campos de golf desarrollada con Flutter y Firebase.
 
-## Getting Started
+## Tecnologías
 
-This project is a starting point for a Flutter application.
+- Flutter
+- Firebase
+- Cloud Firestore
 
-A few resources to get you started if this is your first Flutter project:
+## Funcionalidades actuales
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+- Listado de campos de golf
+- Creación de reservas desde la app
+- Conexión en tiempo real con Firestore
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Estructura
+
+- reservas_golf/ → app Flutter
+- Firebase configurado en el proyecto
