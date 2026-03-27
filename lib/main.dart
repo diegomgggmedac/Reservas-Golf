@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'screens/home/inicio_pantalla.dart';
+import 'services/auth_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,4 +26,23 @@ class MiApp extends StatelessWidget {
       home: const InicioPantalla(),
     );
   }
+}
+
+final authService = AuthService();
+
+// Escuchar cambios de autenticación
+StreamBuilder<User?>(
+  stream: authService.authStateChanges,
+  builder: (context, snapshot) {
+    if (snapshot.hasData) return HomeScreen();
+    return LoginScreen();
+  },
+)
+
+// Iniciar sesión
+try {
+  await authService.signInWithEmailAndPassword(email, password);
+  // Éxito - navegar a home
+} catch (e) {
+  // Mostrar error: e.toString()
 }
