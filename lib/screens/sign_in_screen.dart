@@ -19,7 +19,7 @@ class _SignInScreenState extends State<SignInScreen> {
         _emailController.text.trim(),
         _passwordController.text.trim(),
       );
-      // Éxito - AuthWrapper se encargará de navegar
+     
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
