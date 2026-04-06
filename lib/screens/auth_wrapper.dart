@@ -5,6 +5,8 @@ import 'sign_in_screen.dart';
 import 'home/inicio_pantalla.dart';
 
 class AuthWrapper extends StatelessWidget {
+  const AuthWrapper({super.key});
+
   @override
   Widget build(BuildContext context) {
     final authService = AuthService(); // Instancia local

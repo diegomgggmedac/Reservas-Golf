@@ -2,15 +2,42 @@ import 'package:flutter/material.dart';
 import '../services/auth_service.dart';
 
 class SignInScreen extends StatefulWidget {
+  const SignInScreen({super.key});
+
   @override
-  _SignInScreenState createState() => _SignInScreenState();
+  SignInScreenState createState() => SignInScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class SignInScreenState extends State<SignInScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final authService = AuthService();
   bool _isLoading = false;
+
+  Future<void> _register() async {
+    setState(() => _isLoading = true);
+    try {
+      await authService.createUserWithEmailAndPassword(
+        _emailController.text.trim(),
+        _passwordController.text.trim(),
+      );
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Usuario registrado exitosamente')),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: $e')),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
+  }
 
   Future<void> _signIn() async {
     setState(() => _isLoading = true);
@@ -19,7 +46,7 @@ class _SignInScreenState extends State<SignInScreen> {
         _emailController.text.trim(),
         _passwordController.text.trim(),
       );
-     
+      // Éxito - AuthWrapper se encargará de navegar
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -56,9 +83,18 @@ class _SignInScreenState extends State<SignInScreen> {
             if (_isLoading)
               CircularProgressIndicator()
             else
-              ElevatedButton(
-                onPressed: _signIn,
-                child: Text('Iniciar con Email'),
+              Column(
+                children: [
+                  ElevatedButton(
+                    onPressed: _signIn,
+                    child: Text('Iniciar Sesión'),
+                  ),
+                  SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: _register,
+                    child: Text('Registrarse'),
+                  ),
+                ],
               ),
           ],
         ),
