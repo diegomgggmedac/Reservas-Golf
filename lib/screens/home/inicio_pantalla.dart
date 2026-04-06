@@ -3,6 +3,7 @@ import '../../widgets/tarjeta_campo.dart';
 import '../../models/campo.dart';
 import '../../services/campo_servicio.dart';
 import '../../services/reservas_servicio.dart';
+import '../../services/auth_service.dart';
 
 class InicioPantalla extends StatelessWidget {
   const InicioPantalla({super.key});
@@ -41,10 +42,19 @@ class InicioPantalla extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final campoServicio = CampoServicio();
+    final authService = AuthService();
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Campos de golf'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () async {
+              await authService.signOut();
+            },
+          ),
+        ],
       ),
       body: StreamBuilder<List<Campo>>(
         stream: campoServicio.obtenerCampos(),
