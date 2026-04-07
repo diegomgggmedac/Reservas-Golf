@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 //C:\Users\ruizc\develop\app_golf\lib\pantalla\menuaplication.dart
-
-import 'package:app_golf/pantalla/menuaplication.dart';
-
+import '../menuaplication.dart';
 class PantallaLogin extends StatelessWidget {
   const PantallaLogin({super.key});
 
