@@ -16,10 +16,14 @@ class InicioPantalla extends StatelessWidget {
 
     try {
       await reservaServicio.crearReserva(
-        campoId: campo.id,
-        campoNombre: campo.nombre,
+         campoId: campo.id,
+         campoNombre: campo.nombre,
+         usuarioId: '123',
+         usuarioNombre: 'Juan',
+         fechaHora: DateTime.now(),
+         jugadores: 4,
         precioTotal: campo.precio,
-      );
+);
 
       if (context.mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
