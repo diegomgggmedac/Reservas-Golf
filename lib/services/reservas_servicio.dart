@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/reserva.dart';
 class ReservaServicio {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-}
+
 Future<void> crearReserva({
   required String campoId,
   required String campoNombre,
@@ -23,4 +23,5 @@ Future<void> crearReserva({
     'precioTotal': precioTotal,
     'createdAt': FieldValue.serverTimestamp(),
   });
+}
 }
