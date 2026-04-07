@@ -62,4 +62,16 @@ class Reserva {
       estado: estadoDesdeInt(data['estado'] ?? 0),
     );
   }
+      Map<String, dynamic> toMap() {
+    return {
+      'campoId': campoId,
+      'campoNombre': campoNombre,
+      'usuarioId': usuarioId,
+      'usuarioNombre': usuarioNombre,
+      'fechaHora': fechaHora,
+      'jugadores': jugadores,
+      'precioTotal': precioTotal,
+      'estado': estadoAInt(estado),
+    };
+  }
 }
